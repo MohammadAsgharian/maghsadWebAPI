@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace maghsadAPI.Models
 {
@@ -36,5 +37,8 @@ namespace maghsadAPI.Models
 
         public long PlaceTypeID{get; set;}
         public PlaceType PlaceType{get; set;}
+
+        public  ICollection<PlacePhoto> PlacePhotos {get; set;} = new List<PlacePhoto>();
+
     }
 }

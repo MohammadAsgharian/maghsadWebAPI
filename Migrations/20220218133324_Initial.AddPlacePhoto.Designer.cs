@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using maghsadAPI.Data;
 
 namespace maghsadAPI.Migrations
 {
     [DbContext(typeof(MaghsadContext))]
-    partial class MaghsadContextModelSnapshot : ModelSnapshot
+    [Migration("20220218133324_Initial.AddPlacePhoto")]
+    partial class InitialAddPlacePhoto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,6 +160,7 @@ namespace maghsadAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CoverPhotoName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -168,14 +171,17 @@ namespace maghsadAPI.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("InstagramName")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -187,6 +193,7 @@ namespace maghsadAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Tel")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 

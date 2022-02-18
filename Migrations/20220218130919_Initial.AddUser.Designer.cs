@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using maghsadAPI.Data;
 
 namespace maghsadAPI.Migrations
 {
     [DbContext(typeof(MaghsadContext))]
-    partial class MaghsadContextModelSnapshot : ModelSnapshot
+    [Migration("20220218130919_Initial.AddUser")]
+    partial class InitialAddUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,48 +80,6 @@ namespace maghsadAPI.Migrations
                     b.ToTable("Places");
                 });
 
-            modelBuilder.Entity("maghsadAPI.Models.PlacePhoto", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool?>("IsCover")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("PhotoName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("PlaceID")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("PlacePhotoId")
-                        .HasColumnType("bigint");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("TypeFile")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<long>("UserID")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlaceID");
-
-                    b.HasIndex("PlacePhotoId");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("PlacePhotos");
-                });
-
             modelBuilder.Entity("maghsadAPI.Models.PlaceType", b =>
                 {
                     b.Property<long>("Id")
@@ -154,7 +114,6 @@ namespace maghsadAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("AvatarPhotoName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CoverPhotoName")
@@ -234,29 +193,6 @@ namespace maghsadAPI.Migrations
                     b.Navigation("PlaceType");
                 });
 
-            modelBuilder.Entity("maghsadAPI.Models.PlacePhoto", b =>
-                {
-                    b.HasOne("maghsadAPI.Models.Place", "Place")
-                        .WithMany("PlacePhotos")
-                        .HasForeignKey("PlaceID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("maghsadAPI.Models.PlacePhoto", null)
-                        .WithMany("PlacePhotos")
-                        .HasForeignKey("PlacePhotoId");
-
-                    b.HasOne("maghsadAPI.Models.User", "User")
-                        .WithMany("PlacePhotos")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Place");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("maghsadAPI.Models.User", b =>
                 {
                     b.HasOne("maghsadAPI.Models.UserLevel", "UserLevel")
@@ -268,24 +204,9 @@ namespace maghsadAPI.Migrations
                     b.Navigation("UserLevel");
                 });
 
-            modelBuilder.Entity("maghsadAPI.Models.Place", b =>
-                {
-                    b.Navigation("PlacePhotos");
-                });
-
-            modelBuilder.Entity("maghsadAPI.Models.PlacePhoto", b =>
-                {
-                    b.Navigation("PlacePhotos");
-                });
-
             modelBuilder.Entity("maghsadAPI.Models.PlaceType", b =>
                 {
                     b.Navigation("Places");
-                });
-
-            modelBuilder.Entity("maghsadAPI.Models.User", b =>
-                {
-                    b.Navigation("PlacePhotos");
                 });
 
             modelBuilder.Entity("maghsadAPI.Models.UserLevel", b =>
