@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using maghsadAPI.Repository;
 using maghsadAPI.Models;
+using maghsadAPI.Specification;
 
 
 namespace maghsadAPI.Controllers
@@ -20,7 +21,8 @@ namespace maghsadAPI.Controllers
         }
         public async Task<ActionResult<Models.Place>> GetPlace()
         {
-            var places = await _placeRepository.ListAsync();
+            var spec = new PlaceSpecification();
+            var places = await _placeRepository.ListAsync(spec);
 
             return Ok(places);
         }
