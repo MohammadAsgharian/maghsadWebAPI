@@ -10,8 +10,8 @@ using maghsadAPI.Data;
 namespace maghsadAPI.Migrations
 {
     [DbContext(typeof(MaghsadContext))]
-    [Migration("20220217152800_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220218124732_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

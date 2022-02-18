@@ -16,5 +16,6 @@ namespace maghsadAPI.Repository.Place
         {
             return await _context.Places.ToListAsync();
         }
+
     }
 }
