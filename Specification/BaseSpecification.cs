@@ -12,9 +12,8 @@ namespace maghsadAPI.Specification
         public List<Expression<Func<T, object>>> Includes{get;} = 
             new List<Expression<Func<T, object>>>();
             
-        public BaseSpecification(Expression<Func<T, bool>> criteria )
+        public BaseSpecification()
         {
-            Criteria = criteria;
         }
 
         protected void AddInclude(Expression<Func<T, object>> includeExpression)
