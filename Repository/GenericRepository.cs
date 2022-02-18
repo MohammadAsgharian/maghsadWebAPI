@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using maghsadAPI.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using maghsadAPI.Specification;
 
 namespace maghsadAPI.Repository
 {
@@ -17,7 +17,22 @@ namespace maghsadAPI.Repository
         }
         public async Task<IReadOnlyList<T>> GetListAsync()
         {
-        return await _context.Set<T>().ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
+        }
+
+        public async Task<T> GetEntityWithSpec(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).FirstOrDefaultAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).ToListAsync();
+        }
+
     }
 }

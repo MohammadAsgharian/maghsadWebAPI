@@ -20,7 +20,9 @@ namespace maghsadAPI.Controllers
         }
         public async Task<ActionResult<Models.Place>> GetPlace()
         {
-            return Ok(await _placeRepository.GetListAsync());
+            var places = await _placeRepository.ListAsync();
+
+            return Ok(places);
         }
         [Route("placetype")]
          public async Task<ActionResult<Models.Place>> GetPlaceType()
