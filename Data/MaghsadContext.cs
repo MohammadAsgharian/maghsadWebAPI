@@ -6,10 +6,12 @@ namespace maghsadAPI.Data
 {
     public class MaghsadContext : DbContext
     {
+
         public MaghsadContext(DbContextOptions options): base(options: options)
         {
 
         }
+        // Set Of All Places {Like Hotels, Attractions, Restourant and etc }
         public DbSet<Models.Place> Places{get; set;}
         public DbSet<Models.PlaceType> PlaceTypes{get; set;}
 
