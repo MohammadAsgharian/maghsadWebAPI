@@ -38,6 +38,10 @@ namespace maghsadAPI.Models
         public long PlaceTypeID{get; set;}
         public PlaceType PlaceType{get; set;}
 
+        public long CityID{get; set;}
+        public City City{get; set;}
+        
+
         public  ICollection<PlacePhoto> PlacePhotos {get; set;} = new List<PlacePhoto>();
 
     }

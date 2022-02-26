@@ -22,6 +22,8 @@ namespace maghsadAPI.Data
 
         public DbSet<Models.PlacePhoto> PlacePhotos{get; set;}
 
+        public DbSet<Models.Province> Provinces{get; set;}
+        public DbSet<Models.City> Cities{get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,6 +47,7 @@ namespace maghsadAPI.Data
                     .WithOne(p => p.UserLevel)
                     .HasForeignKey(p => p.UserLevelID);
             
+
              modelBuilder.Entity<PlacePhoto>()
                     .HasOne(p => p.User)
                     .WithMany(p => p.PlacePhotos)
@@ -62,6 +65,17 @@ namespace maghsadAPI.Data
                     .HasMany(p => p.PlacePhotos)
                     .WithOne(p => p.Place)
                     .HasForeignKey(p => p.PlaceID);
+
+
+            modelBuilder.Entity<Place>()
+                    .HasOne(p => p.City)
+                    .WithMany(p => p.Places)
+                    .HasForeignKey(p => p.CityID);
+
+            modelBuilder.Entity<City>()
+                    .HasMany(p => p.Places)
+                    .WithOne(p => p.City)
+                    .HasForeignKey(p => p.CityID);
         }
     }
 }

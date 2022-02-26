@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using maghsadAPI.Data;
 
 namespace maghsadAPI.Migrations
 {
     [DbContext(typeof(MaghsadContext))]
-    partial class MaghsadContextModelSnapshot : ModelSnapshot
+    [Migration("20220226192535_ADDCityandProvince")]
+    partial class ADDCityandProvince
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
