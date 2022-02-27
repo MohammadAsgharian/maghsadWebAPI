@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using maghsadAPI.Repository;
 using maghsadAPI.Models;
 using maghsadAPI.Specification;
+using maghsadAPI.Helper;
 
 
 namespace maghsadAPI.Controllers
@@ -19,12 +20,20 @@ namespace maghsadAPI.Controllers
             _placeRepository = placeRepository;
             _placetypeRepository = placetypeRepository;
         }
-        public async Task<ActionResult<Models.Place>> GetPlace([FromQuery]PlaceSpecParams placeParams)
+        public async Task<ActionResult<Pagination<Models.Place>>> GetPlace([FromQuery]PlaceSpecParams placeParams)
         {
             var spec = new PlaceSpecification(placeParams);
-            var places = await _placeRepository.ListAsync(spec);
+            
+            var countSpec = new PlaceWithFiltersSpecification(placeParams);
 
-            return Ok(places);
+            var totalItems = await _placeRepository.CountAsync(countSpec);
+
+            var places = await _placeRepository.ListAsync(spec);
+            
+
+
+
+            return Ok(new Pagination);
         }
         [Route("placetype")]
          public async Task<ActionResult<Models.Place>> GetPlaceType()
