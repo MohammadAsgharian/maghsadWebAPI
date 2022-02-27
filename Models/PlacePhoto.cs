@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotation;
 using System.Collections.Generic;
 
 namespace maghsadAPI.Models

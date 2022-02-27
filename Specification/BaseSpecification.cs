@@ -14,6 +14,9 @@ namespace maghsadAPI.Specification
             Criteria = criteria;
         }
         public Expression<Func<T, bool>> Criteria{get;}
+
+        public Expression<Func<T, bool>> OrderBy{get; private set;}
+        public Expression<Func<T, bool>> OrderByDescending{get; private set;}
         
         public List<Expression<Func<T, object>>> Includes{get;} = 
             new List<Expression<Func<T, object>>>();
@@ -24,6 +27,13 @@ namespace maghsadAPI.Specification
         {
             Includes.Add(includeExpression);
         }
-
+        protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)
+        {
+            OrderBy = orderByExpression;
+        }
+        protected void AddorderByDescending(Expression<Func<T, object>> orderByDescendingExpression)
+        {
+            OrderByDescending = orderByDescendingExpression;
+        }
     }
 }
