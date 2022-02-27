@@ -76,6 +76,17 @@ namespace maghsadAPI.Data
                     .HasMany(p => p.Places)
                     .WithOne(p => p.City)
                     .HasForeignKey(p => p.CityID);
+
+
+                modelBuilder.Entity<City>()
+                    .HasOne(p => p.Province)
+                    .WithMany(p => p.Cities)
+                    .HasForeignKey(p => p.ProvinceID);
+
+            modelBuilder.Entity<Province>()
+                    .HasMany(p => p.Cities)
+                    .WithOne(p => p.Province)
+                    .HasForeignKey(p => p.ProvinceID);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace maghsadAPI.Controllers
 
 
 
-            return Ok(new Pagination);
+            return Ok(places);
         }
         [Route("placetype")]
          public async Task<ActionResult<Models.Place>> GetPlaceType()
