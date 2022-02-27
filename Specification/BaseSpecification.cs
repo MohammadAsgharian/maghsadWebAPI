@@ -15,6 +15,9 @@ namespace maghsadAPI.Specification
         }
         public Expression<Func<T, bool>> Criteria{get;}
 
+        public int Take { get; private set; }
+        public int Skip { get; private set; }
+        public  bool IsPagingEnable{get; private set;} 
         public Expression<Func<T, object>> OrderBy{get; private set;}
         public Expression<Func<T, object>> OrderByDescending{get; private set;}
         
@@ -34,6 +37,14 @@ namespace maghsadAPI.Specification
         protected void AddorderByDescending(Expression<Func<T, object>> orderByDescendingExpression)
         {
             OrderByDescending = orderByDescendingExpression;
+        }
+
+
+         protected void ApplyPaging(int skip, int take)
+        {
+            Skip = skip;
+            Take = take;
+            IsPagingEnable = true;
         }
     }
 }

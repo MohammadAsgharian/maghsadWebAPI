@@ -19,9 +19,9 @@ namespace maghsadAPI.Controllers
             _placeRepository = placeRepository;
             _placetypeRepository = placetypeRepository;
         }
-        public async Task<ActionResult<Models.Place>> GetPlace(string sort)
+        public async Task<ActionResult<Models.Place>> GetPlace([FromQuery]PlaceSpecParams placeParams)
         {
-            var spec = new PlaceSpecification(sort);
+            var spec = new PlaceSpecification(placeParams);
             var places = await _placeRepository.ListAsync(spec);
 
             return Ok(places);

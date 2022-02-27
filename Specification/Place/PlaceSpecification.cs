@@ -1,26 +1,23 @@
-using System;
-using System.Linq.Expressions;
-using maghsadAPI.Models;
-
-
 namespace maghsadAPI.Specification
 {
     public  class PlaceSpecification : BaseSpecification<Models.Place>
     {
 
-        public PlaceSpecification(string sort)
+        public PlaceSpecification(PlaceSpecParams placeParams)
         {
             AddInclude(x=> x.PlaceType);
+            AddOrderBy(x => x.Id);
+            ApplyPaging(placeParams.PageSize *(placeParams.PageIndex -1 ), placeParams.PageSize);
 
-            if(!string.IsNullOrEmpty(sort))
+            if(!string.IsNullOrEmpty(placeParams.Sort))
             {
-                switch  (sort)
+                switch  (placeParams.Sort)
                 {
                     case "TitleAsc":
-                        AddOrderBy(p => p.Id);
+                        AddOrderBy(p => p.Title);
                         break;
                     default :
-                        AddOrderBy(p=> p.Title);
+                        AddOrderBy(p=> p.Id);
                         break;
                 }
             }

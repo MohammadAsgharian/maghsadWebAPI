@@ -33,6 +33,10 @@ namespace maghsadAPI.Repository
         {
             return await ApplySpecification(spec).ToListAsync();
         }
+         public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
+        }
 
     }
 }
