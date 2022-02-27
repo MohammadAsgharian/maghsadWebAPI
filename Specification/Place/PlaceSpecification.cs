@@ -17,7 +17,7 @@ namespace maghsadAPI.Specification
                 switch  (sort)
                 {
                     case "TitleAsc":
-                        AddOrderBy(p => p.Title);
+                        AddOrderBy(p => p.Id);
                         break;
                     default :
                         AddOrderBy(p=> p.Title);

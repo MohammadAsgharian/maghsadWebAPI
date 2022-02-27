@@ -15,8 +15,8 @@ namespace maghsadAPI.Specification
         }
         public Expression<Func<T, bool>> Criteria{get;}
 
-        public Expression<Func<T, bool>> OrderBy{get; private set;}
-        public Expression<Func<T, bool>> OrderByDescending{get; private set;}
+        public Expression<Func<T, object>> OrderBy{get; private set;}
+        public Expression<Func<T, object>> OrderByDescending{get; private set;}
         
         public List<Expression<Func<T, object>>> Includes{get;} = 
             new List<Expression<Func<T, object>>>();
