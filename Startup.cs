@@ -25,6 +25,7 @@ namespace maghsadAPI
 
             services.AddControllers();
             services.AddDbContext<maghsadAPI.Data.MaghsadContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));
+            services.AddDbContext<maghsadAPI.Data.AppIdentityDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "maghsadAPI", Version = "v1" });

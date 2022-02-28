@@ -57,33 +57,39 @@ namespace maghsadAPI.Data
                     .WithOne(p => p.User)
                     .HasForeignKey(p => p.UserID);
 
-            modelBuilder.Entity<PlacePhoto>()
+
+
+                modelBuilder.Entity<PlacePhoto>()
                     .HasOne(p => p.Place)
                     .WithMany(p => p.PlacePhotos)
                     .HasForeignKey(p => p.PlaceID);
-            modelBuilder.Entity<Place>()
+                modelBuilder.Entity<Place>()
                     .HasMany(p => p.PlacePhotos)
                     .WithOne(p => p.Place)
                     .HasForeignKey(p => p.PlaceID);
 
-
-            modelBuilder.Entity<Place>()
+                //      Summery
+                //              Relation Between Place And City
+                //              Every City has many Places (Hotels, Attractions and etc)
+                //              ForeignKey CityID in Place Table
+                modelBuilder.Entity<Place>()
                     .HasOne(p => p.City)
                     .WithMany(p => p.Places)
                     .HasForeignKey(p => p.CityID);
-
-            modelBuilder.Entity<City>()
+                modelBuilder.Entity<City>()
                     .HasMany(p => p.Places)
                     .WithOne(p => p.City)
                     .HasForeignKey(p => p.CityID);
 
 
+                //      Summery
+                //              Relation Between City And Province
+                //              ForeignKey CityID in Province Table
                 modelBuilder.Entity<City>()
                     .HasOne(p => p.Province)
                     .WithMany(p => p.Cities)
                     .HasForeignKey(p => p.ProvinceID);
-
-            modelBuilder.Entity<Province>()
+                modelBuilder.Entity<Province>()
                     .HasMany(p => p.Cities)
                     .WithOne(p => p.Province)
                     .HasForeignKey(p => p.ProvinceID);
