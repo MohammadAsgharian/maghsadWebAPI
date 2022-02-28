@@ -1,3 +1,4 @@
+
 namespace maghsadAPI.Specification
 {
     public  class PlaceSpecification : BaseSpecification<Models.Place>

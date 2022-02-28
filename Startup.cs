@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using maghsadAPI.Models.Identity;
 
 namespace maghsadAPI
 {
@@ -26,6 +27,8 @@ namespace maghsadAPI
             services.AddControllers();
             services.AddDbContext<maghsadAPI.Data.MaghsadContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));
             services.AddDbContext<maghsadAPI.Data.AppIdentityDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));
+
+            services.AddIdentityServices();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "maghsadAPI", Version = "v1" });

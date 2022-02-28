@@ -14,7 +14,6 @@ namespace maghsadAPI.Controllers
     {
         private readonly IGenericRepository<Place>  _placeRepository;
         private readonly IGenericRepository<PlaceType>  _placetypeRepository;
-
         public PlaceController(IGenericRepository<Place> placeRepository, IGenericRepository<PlaceType> placetypeRepository)
         {
             _placeRepository = placeRepository;
