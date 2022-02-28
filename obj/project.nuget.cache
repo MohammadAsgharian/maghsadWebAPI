@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aEcZOCsVVShkV+EePI6z3Xr0lwLsPgULPYnVbW6RIiLfwYdeGS+rROCAtOma0iBJuNYlvI8cNz9r+/wBXc8N2Q==",
+  "dgSpecHash": "LCB2FWsEg8rPzItjCmhwVEaqI31ztcisy3UC0DAp8Mu5hvTGhlN3F5/Yk4u05jHHo7V3i1FKAk5t1mZ+m65Yuw==",
   "success": true,
   "projectFilePath": "D:\\MaghsadShowAPI\\maghsadWebAPI\\maghsadAPI.csproj",
   "expectedPackageFiles": [
@@ -49,7 +49,7 @@
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\microsoft.extensions.webencoders\\2.2.0\\microsoft.extensions.webencoders.2.2.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\microsoft.identity.client\\4.14.0\\microsoft.identity.client.4.14.0.nupkg.sha512",
-    "C:\\Users\\M_Asgharian\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.7.1\\microsoft.identitymodel.jsonwebtokens.6.7.1.nupkg.sha512",
+    "C:\\Users\\M_Asgharian\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.16.0\\microsoft.identitymodel.jsonwebtokens.6.16.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\microsoft.identitymodel.logging\\6.16.0\\microsoft.identitymodel.logging.6.16.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.7.1\\microsoft.identitymodel.protocols.6.7.1.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.7.1\\microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
@@ -89,7 +89,7 @@
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\system.globalization.extensions\\4.3.0\\system.globalization.extensions.4.3.0.nupkg.sha512",
-    "C:\\Users\\M_Asgharian\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
+    "C:\\Users\\M_Asgharian\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.16.0\\system.identitymodel.tokens.jwt.6.16.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\M_Asgharian\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
