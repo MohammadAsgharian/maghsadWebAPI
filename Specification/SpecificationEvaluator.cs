@@ -1,6 +1,7 @@
 using maghsadAPI.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using maghsadAPI.Infrastructure;
 
 namespace maghsadAPI.Specification
 {

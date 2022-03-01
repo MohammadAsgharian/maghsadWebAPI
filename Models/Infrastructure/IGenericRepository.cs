@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using maghsadAPI.Specification;
 
-namespace maghsadAPI.Repository
+namespace maghsadAPI.Infrastructure
 {
     public interface IGenericRepository<T> where T: BaseEntity
     {

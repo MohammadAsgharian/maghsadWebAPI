@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using maghsadAPI.Models.Identity;
+using maghsadAPI.Infrastructure;
 
 namespace maghsadAPI
 {
@@ -22,7 +23,7 @@ namespace maghsadAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<Repository.Place.IPlaceRepository, Repository.Place.PlaceRepository>();
-            services.AddScoped(typeof(Repository.IGenericRepository<>), (typeof(Repository.GenericRepository<>)));
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(Repository.GenericRepository<>)));
 
             services.AddControllers();
             services.AddDbContext<maghsadAPI.Data.MaghsadContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using maghsadAPI.Models.Dto;
 using System.Threading.Tasks;
 using maghsadAPI.Repository;
 using maghsadAPI.Models.Identity;
@@ -21,6 +22,16 @@ namespace maghsadAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<>>
+        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
+        {
+            var user = await _userManager.FindByEmailAsync(loginDto.Email);
+            if(user == null) return Unauthorized();
+            
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+
+            if(!result.Succeeded) return Unauthorized();
+
+            return null;
+        }
     }
 }

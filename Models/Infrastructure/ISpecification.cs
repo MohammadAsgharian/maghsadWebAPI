@@ -2,7 +2,7 @@ using System;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 
-namespace maghsadAPI.Specification
+namespace maghsadAPI.Infrastructure
 {
     public interface ISpecification<T>
     {
