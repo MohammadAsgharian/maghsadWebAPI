@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using maghsadAPI.Models.Identity;
 using maghsadAPI.Infrastructure;
+using maghsadAPI.Infrastructure.Services;
 
 namespace maghsadAPI
 {
@@ -22,6 +23,7 @@ namespace maghsadAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<Repository.Place.IPlaceRepository, Repository.Place.PlaceRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(Repository.GenericRepository<>)));
 
@@ -29,7 +31,7 @@ namespace maghsadAPI
             services.AddDbContext<maghsadAPI.Data.MaghsadContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));
             services.AddDbContext<maghsadAPI.Data.AppIdentityDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));
 
-            services.AddIdentityServices();
+            services.AddIdentityServices(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "maghsadAPI", Version = "v1" });
@@ -49,7 +51,7 @@ namespace maghsadAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
