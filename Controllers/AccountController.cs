@@ -2,12 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using maghsadAPI.Models.Dto;
 using System.Threading.Tasks;
-using maghsadAPI.Repository;
 using maghsadAPI.Models.Identity;
-using maghsadAPI.Specification;
-using maghsadAPI.Helper;
+using maghsadAPI.Infrastructure;
 
-namespace maghsadAPI.Controllers 
+namespace maghsadAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -15,10 +13,12 @@ namespace maghsadAPI.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        private readonly ITokenService _tokenService;
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _tokenService = tokenService;
         }
 
         [HttpPost("login")]
@@ -31,7 +31,14 @@ namespace maghsadAPI.Controllers
 
             if(!result.Succeeded) return Unauthorized();
 
-            return null;
+
+
+            return new UserDto
+            {
+                Email =user.Email,
+                Token = _tokenService.CreateToken(user),
+                Username =  user.UserName
+            };
         }
     }
 }

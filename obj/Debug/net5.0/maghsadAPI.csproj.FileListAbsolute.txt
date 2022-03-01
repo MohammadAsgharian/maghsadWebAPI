@@ -144,3 +144,8 @@ D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptograp
 D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
