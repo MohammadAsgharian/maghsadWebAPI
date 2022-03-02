@@ -7,7 +7,7 @@ namespace maghsadAPI.Data
     public class MaghsadContext : DbContext
     {
 
-        public MaghsadContext(DbContextOptions options): base(options: options)
+        public MaghsadContext(DbContextOptions<MaghsadContext> options): base(options: options)
         {
 
         }

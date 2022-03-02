@@ -149,3 +149,4 @@ D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptograp
 D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\appsettings.json

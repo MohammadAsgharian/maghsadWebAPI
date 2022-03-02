@@ -28,8 +28,8 @@ namespace maghsadAPI
             services.AddScoped(typeof(IGenericRepository<>), (typeof(Repository.GenericRepository<>)));
 
             services.AddControllers();
-            services.AddDbContext<maghsadAPI.Data.MaghsadContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));
-            services.AddDbContext<maghsadAPI.Data.AppIdentityDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommandConStr")));
+            services.AddDbContext<maghsadAPI.Data.MaghsadContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString($"CommandConStr")));
+            services.AddDbContext<maghsadAPI.Data.AppIdentityDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString($"IdentityConStr")));
 
             services.AddIdentityServices(Configuration);
             services.AddSwaggerGen(c =>
