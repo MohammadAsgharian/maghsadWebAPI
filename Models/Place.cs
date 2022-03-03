@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using maghsadAPI.Models.Identity;
 
 namespace maghsadAPI.Models
 {
@@ -35,11 +37,20 @@ namespace maghsadAPI.Models
         public bool? Status { get; set; }
         public int? PriceType { get; set; }
 
-        public long PlaceTypeID{get; set;}
+        public long PlaceTypeId{get; set;}
         public PlaceType PlaceType{get; set;}
 
-        public long CityID{get; set;}
+        public long CityId{get; set;}
         public City City{get; set;}
+
+       
+        public long? AttractionId{get; set;}
+        public AttractionType AttractionType{get; set;}
+
+
+        [Required]
+        public string UserId{get; set;}
+        public AppUser AppUser{get; set;}
         
 
         public  ICollection<PlacePhoto> PlacePhotos {get; set;} = new List<PlacePhoto>();

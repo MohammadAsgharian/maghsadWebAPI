@@ -1,12 +1,14 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
+using System;
+using System.Linq;
 using maghsadAPI.Models.Dto;
 using System.Threading.Tasks;
-using maghsadAPI.Models.Identity;
-using maghsadAPI.Infrastructure;
 using System.Security.Claims;
-using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using maghsadAPI.Infrastructure;
+using maghsadAPI.Models.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+
 
 namespace maghsadAPI.Controllers
 {
@@ -16,13 +18,34 @@ namespace maghsadAPI.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ITokenService _tokenService;
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService)
+        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,SignInManager<AppUser> signInManager, ITokenService tokenService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
+            _roleManager = roleManager;
         }
+
+        
+        // [HttpGet("create")]
+        // public async Task<ActionResult<bool>> CreateUser()
+        // {
+          
+        //     AppUser appUser = new AppUser
+        //     {
+        //         SinginDate = DateTime.Now.Date,
+        //         UserName = "m.vahid",
+        //         Email = "marzieh.vahid@gmail.com",
+        //         LastName ="وحید",
+        //         FirstName ="مرضیه"
+        //     };
+            
+        //     await _userManager.CreateAsync(appUser,"Rayan@Asgharian.1398");
+            
+        //      return (await _userManager.AddToRoleAsync(appUser,"Admin")).Succeeded;
+        // }
 
         [HttpGet]
         [Authorize]
@@ -62,5 +85,12 @@ namespace maghsadAPI.Controllers
                 Username =  user.UserName
             };
         }
+
+        [HttpGet("emailexists")]
+        public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
+        {
+            return await _userManager.FindByEmailAsync(email) != null;
+        }
+        
     }
 }

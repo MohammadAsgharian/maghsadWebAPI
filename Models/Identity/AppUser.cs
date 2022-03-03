@@ -1,5 +1,8 @@
-using Microsoft.AspNetCore.Identity;
 using System;
+using maghsadAPI.Models;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace maghsadAPI.Models.Identity
 {
@@ -15,6 +18,11 @@ namespace maghsadAPI.Models.Identity
         public DateTime SinginDate { get; set; }
 
         public string CoverPhotoName { get; set; }
+
+        public  ICollection<Place> Places {get; set;} = new List<Place>();
+        public  ICollection<PlacePhoto> PlacePhotos {get; set;} = new List<PlacePhoto>();
+
+
 
 
     }

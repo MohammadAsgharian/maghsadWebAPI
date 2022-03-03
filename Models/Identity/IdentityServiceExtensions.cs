@@ -13,11 +13,12 @@ namespace maghsadAPI.Models.Identity
         public static IServiceCollection AddIdentityServices(this IServiceCollection services,
                                 IConfiguration config)
         {
-            var builder = services.AddIdentityCore<AppUser>();
 
-            builder = new IdentityBuilder(builder.UserType, builder.Services);
-            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
-            builder.AddSignInManager<SignInManager<AppUser>>();
+            services.AddIdentity<AppUser, IdentityRole>()
+                            .AddRoles<IdentityRole>()
+                            .AddRoleManager<RoleManager<IdentityRole>>()
+                            .AddDefaultTokenProviders()
+                            .AddEntityFrameworkStores<AppIdentityDbContext>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

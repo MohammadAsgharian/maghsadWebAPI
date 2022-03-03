@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using maghsadAPI.Models.Identity;
 
 namespace maghsadAPI.Models
 {
@@ -7,13 +8,14 @@ namespace maghsadAPI.Models
     {
         [Required]
         public string PhotoName { get; set; }
-
-        public long PlaceID { get; set; }
+        [Required]
+        public long PlaceId { get; set; }
 
         public Place Place{get; set;}
 
-        public long UserID { get; set; }
-        public User User{get; set;}
+        [Required]
+        public string UserId{get; set;}
+        public AppUser AppUser{get; set;}
 
         [Required]
         [StringLength(50)]
@@ -23,7 +25,7 @@ namespace maghsadAPI.Models
 
         public bool? IsCover { get; set; }
 
-        public  ICollection<PlacePhoto> PlacePhotos {get; set;} = new List<PlacePhoto>();
+       
 
     }
 

@@ -55,6 +55,82 @@ namespace maghsadAPI.Migrations
                     b.ToTable("Cities");
                 });
 
+            modelBuilder.Entity("maghsadAPI.Models.Identity.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ActivateSms")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AvatarPhotoName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoverPhotoName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstagramName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SinginDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Tel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AspNetUsers");
+                });
+
             modelBuilder.Entity("maghsadAPI.Models.Place", b =>
                 {
                     b.Property<long>("Id")
@@ -65,7 +141,7 @@ namespace maghsadAPI.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("CityID")
+                    b.Property<long>("CityId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Description")
@@ -85,7 +161,7 @@ namespace maghsadAPI.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<long>("PlaceTypeID")
+                    b.Property<long>("PlaceTypeId")
                         .HasColumnType("bigint");
 
                     b.Property<int?>("PriceType")
@@ -107,14 +183,20 @@ namespace maghsadAPI.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int?>("grade")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CityID");
+                    b.HasIndex("CityId");
 
-                    b.HasIndex("PlaceTypeID");
+                    b.HasIndex("PlaceTypeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Places");
                 });
@@ -133,10 +215,7 @@ namespace maghsadAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("PlaceID")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("PlacePhotoId")
+                    b.Property<long>("PlaceId")
                         .HasColumnType("bigint");
 
                     b.Property<bool?>("Status")
@@ -147,16 +226,15 @@ namespace maghsadAPI.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<long>("UserID")
-                        .HasColumnType("bigint");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaceID");
+                    b.HasIndex("PlaceId");
 
-                    b.HasIndex("PlacePhotoId");
-
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("PlacePhotos");
                 });
@@ -298,15 +376,23 @@ namespace maghsadAPI.Migrations
                 {
                     b.HasOne("maghsadAPI.Models.City", "City")
                         .WithMany("Places")
-                        .HasForeignKey("CityID")
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("maghsadAPI.Models.PlaceType", "PlaceType")
                         .WithMany("Places")
-                        .HasForeignKey("PlaceTypeID")
+                        .HasForeignKey("PlaceTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("maghsadAPI.Models.Identity.AppUser", "AppUser")
+                        .WithMany("Places")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("City");
 
@@ -317,23 +403,19 @@ namespace maghsadAPI.Migrations
                 {
                     b.HasOne("maghsadAPI.Models.Place", "Place")
                         .WithMany("PlacePhotos")
-                        .HasForeignKey("PlaceID")
+                        .HasForeignKey("PlaceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("maghsadAPI.Models.PlacePhoto", null)
+                    b.HasOne("maghsadAPI.Models.Identity.AppUser", "AppUser")
                         .WithMany("PlacePhotos")
-                        .HasForeignKey("PlacePhotoId");
-
-                    b.HasOne("maghsadAPI.Models.User", "User")
-                        .WithMany("PlacePhotos")
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Place");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("maghsadAPI.Models.User", b =>
@@ -352,12 +434,14 @@ namespace maghsadAPI.Migrations
                     b.Navigation("Places");
                 });
 
-            modelBuilder.Entity("maghsadAPI.Models.Place", b =>
+            modelBuilder.Entity("maghsadAPI.Models.Identity.AppUser", b =>
                 {
                     b.Navigation("PlacePhotos");
+
+                    b.Navigation("Places");
                 });
 
-            modelBuilder.Entity("maghsadAPI.Models.PlacePhoto", b =>
+            modelBuilder.Entity("maghsadAPI.Models.Place", b =>
                 {
                     b.Navigation("PlacePhotos");
                 });
@@ -370,11 +454,6 @@ namespace maghsadAPI.Migrations
             modelBuilder.Entity("maghsadAPI.Models.Province", b =>
                 {
                     b.Navigation("Cities");
-                });
-
-            modelBuilder.Entity("maghsadAPI.Models.User", b =>
-                {
-                    b.Navigation("PlacePhotos");
                 });
 
             modelBuilder.Entity("maghsadAPI.Models.UserLevel", b =>

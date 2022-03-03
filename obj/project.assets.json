@@ -6686,6 +6686,7 @@
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.14",
       "Microsoft.EntityFrameworkCore >= 5.0.14",
+      "Microsoft.EntityFrameworkCore.Analyzers >= 5.0.14",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.14",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.14",
       "Microsoft.IdentityModel.Tokens >= 6.16.0",
@@ -6695,24 +6696,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\M_Asgharian\\.nuget\\packages\\": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MaghsadShowAPI\\maghsadWebAPI\\maghsadAPI.csproj",
+      "projectUniqueName": "D:\\ASPnetCore-WebApi\\maghsadAPI\\maghsadAPI.csproj",
       "projectName": "maghsadAPI",
-      "projectPath": "D:\\MaghsadShowAPI\\maghsadWebAPI\\maghsadAPI.csproj",
-      "packagesPath": "C:\\Users\\M_Asgharian\\.nuget\\packages\\",
-      "outputPath": "D:\\MaghsadShowAPI\\maghsadWebAPI\\obj\\",
+      "projectPath": "D:\\ASPnetCore-WebApi\\maghsadAPI\\maghsadAPI.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "D:\\ASPnetCore-WebApi\\maghsadAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\M_Asgharian\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6761,6 +6764,10 @@
             "target": "Package",
             "version": "[5.0.14, )"
           },
+          "Microsoft.EntityFrameworkCore.Analyzers": {
+            "target": "Package",
+            "version": "[5.0.14, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -6798,12 +6805,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.13, 5.0.13]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -6812,7 +6813,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

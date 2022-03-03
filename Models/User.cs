@@ -42,6 +42,5 @@ namespace maghsadAPI.Models
 
         public long? YourEarn { get; set; }
 
-        public  ICollection<PlacePhoto> PlacePhotos {get; set;} = new List<PlacePhoto>();
     }
 }
