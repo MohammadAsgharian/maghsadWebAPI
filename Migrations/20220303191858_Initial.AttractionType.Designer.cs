@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using maghsadAPI.Data;
 
 namespace maghsadAPI.Migrations
 {
     [DbContext(typeof(MaghsadContext))]
-    partial class MaghsadContextModelSnapshot : ModelSnapshot
+    [Migration("20220303191858_Initial.AttractionType")]
+    partial class InitialAttractionType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,7 +163,7 @@ namespace maghsadAPI.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("AttractionTypeId")
+                    b.Property<long?>("AttractionId")
                         .HasColumnType("bigint");
 
                     b.Property<long>("CityId")
@@ -215,7 +217,7 @@ namespace maghsadAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AttractionTypeId");
+                    b.HasIndex("AttractionId");
 
                     b.HasIndex("CityId");
 
@@ -401,7 +403,7 @@ namespace maghsadAPI.Migrations
                 {
                     b.HasOne("maghsadAPI.Models.AttractionType", "AttractionType")
                         .WithMany("Places")
-                        .HasForeignKey("AttractionTypeId");
+                        .HasForeignKey("AttractionId");
 
                     b.HasOne("maghsadAPI.Models.City", "City")
                         .WithMany("Places")

@@ -44,7 +44,7 @@ namespace maghsadAPI.Models
         public City City{get; set;}
 
        
-        public long? AttractionId{get; set;}
+        public long? AttractionTypeId{get; set;}
         public AttractionType AttractionType{get; set;}
 
 

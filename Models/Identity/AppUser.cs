@@ -1,11 +1,13 @@
 using System;
 using maghsadAPI.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
 
 namespace maghsadAPI.Models.Identity
 {
+    [Table("AspNetUsers")]
     public class AppUser : IdentityUser
     {
         public string FirstName { get; set; }

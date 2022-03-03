@@ -118,11 +118,11 @@ namespace maghsadAPI.Data
                 modelBuilder.Entity<Place>()
                     .HasOne(p => p.AttractionType)
                     .WithMany(p => p.Places)
-                    .HasForeignKey(p => p.AttractionId);
+                    .HasForeignKey(p => p.AttractionTypeId);
                 modelBuilder.Entity<AttractionType>()
                     .HasMany(p => p.Places)
                     .WithOne(p => p.AttractionType)
-                    .HasForeignKey(p => p.AttractionId);
+                    .HasForeignKey(p => p.AttractionTypeId);
         }
     }
 }
