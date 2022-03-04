@@ -38,7 +38,7 @@ namespace maghsadAPI
             });
             services.AddCors(opt => {
                 opt.AddPolicy("CorsPolicy",policy =>{
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://maghsadshow.com/");
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins();
                 });
             });
                 
