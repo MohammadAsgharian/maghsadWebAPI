@@ -63,11 +63,8 @@ namespace maghsadAPI.Controllers
         }
 
 
-
-
-
         [HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
+        public async Task<ActionResult<UserDto>> Login([FromQuery]LoginDto loginDto)
         {
            var user = await _userManager.FindByEmailAsync(loginDto.Email);
             if(user == null) return Unauthorized();
