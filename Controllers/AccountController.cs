@@ -4,6 +4,7 @@ using maghsadAPI.Models.Dto;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+
 using maghsadAPI.Infrastructure;
 using maghsadAPI.Models.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -63,8 +64,9 @@ namespace maghsadAPI.Controllers
         }
 
 
-        [HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login([FromQuery]LoginDto loginDto)
+         [Route("login")]
+         [HttpPost]
+        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
            var user = await _userManager.FindByEmailAsync(loginDto.Email);
             if(user == null) return Unauthorized();

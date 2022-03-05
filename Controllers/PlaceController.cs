@@ -4,6 +4,7 @@ using maghsadAPI.Infrastructure;
 using maghsadAPI.Models;
 using maghsadAPI.Specification;
 using maghsadAPI.Helper;
+using maghsadAPI.Models.Dto;
 
 
 namespace maghsadAPI.Controllers
@@ -34,6 +35,9 @@ namespace maghsadAPI.Controllers
 
             return Ok(places);
         }
+
+        
+         
         [Route("placetype")]
          public async Task<ActionResult<Models.Place>> GetPlaceType()
         {

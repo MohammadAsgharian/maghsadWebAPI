@@ -36,9 +36,10 @@ namespace maghsadAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "maghsadAPI", Version = "v1" });
             });
+            
             services.AddCors(opt => {
-                opt.AddPolicy("CorsPolicy",policy =>{
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins();
+                    opt.AddPolicy("CorsPolicy",policy =>{
+                    policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
                 
@@ -58,10 +59,10 @@ namespace maghsadAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+           app.UseCors("CorsPolicy");  
+       
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
