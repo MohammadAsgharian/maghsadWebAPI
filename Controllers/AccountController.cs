@@ -53,7 +53,7 @@ namespace maghsadAPI.Controllers
         //      return (await _userManager.AddToRoleAsync(appUser,"Admin")).Succeeded;
         // }
 
-        [HttpGet]
+        [HttpGet("refresh")]
         [Authorize]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {

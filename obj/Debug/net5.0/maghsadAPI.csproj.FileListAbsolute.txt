@@ -150,3 +150,9 @@ D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.E
 D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 D:\ASPnetCore-WebApi\maghsadAPI\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\appsettings.json
+D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\AutoMapper.dll
+D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\MaghsadShowAPI\maghsadWebAPI\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

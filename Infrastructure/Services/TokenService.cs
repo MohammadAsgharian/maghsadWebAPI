@@ -24,7 +24,9 @@ namespace maghsadAPI.Infrastructure.Services
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.GivenName, user.UserName)
+                new Claim(ClaimTypes.GivenName, user.UserName),
+                new Claim(ClaimTypes.Role, "Admin"),
+                new Claim(ClaimTypes.Role, "Member")
             };
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha256Signature);
 
