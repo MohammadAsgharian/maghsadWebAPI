@@ -21,6 +21,12 @@ namespace maghsadAPI.Models.Identity
 
         public string CoverPhotoName { get; set; }
 
+        [NotMapped]
+        public string Token {get; set;}
+
+        [NotMapped]
+        public List<string> Roles {get; set;} = new List<string>();
+
         public  ICollection<Place> Places {get; set;} = new List<Place>();
         public  ICollection<PlacePhoto> PlacePhotos {get; set;} = new List<PlacePhoto>();
 

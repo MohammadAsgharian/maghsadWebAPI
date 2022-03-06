@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using maghsadAPI.Models.Identity;
 using maghsadAPI.Infrastructure;
 using maghsadAPI.Infrastructure.Services;
+using AutoMapper;
+using maghsadAPI.Helper;
 
 namespace maghsadAPI
 {
@@ -26,7 +28,7 @@ namespace maghsadAPI
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<Repository.Place.IPlaceRepository, Repository.Place.PlaceRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(Repository.GenericRepository<>)));
-
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddControllers();
             services.AddDbContext<maghsadAPI.Data.MaghsadContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString($"CommandConStr")));
             services.AddDbContext<maghsadAPI.Data.AppIdentityDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString($"IdentityConStr")));

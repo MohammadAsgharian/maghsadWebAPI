@@ -1,12 +1,13 @@
 using System;
+using AutoMapper;
 using System.Linq;
 using maghsadAPI.Models.Dto;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
-
 using maghsadAPI.Infrastructure;
 using maghsadAPI.Models.Identity;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 
@@ -21,12 +22,16 @@ namespace maghsadAPI.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ITokenService _tokenService;
-        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,SignInManager<AppUser> signInManager, ITokenService tokenService)
+        private readonly IMapper _mapper;
+        public AccountController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
+                                SignInManager<AppUser> signInManager, ITokenService tokenService,
+                                IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
             _roleManager = roleManager;
+            _mapper = mapper;
         }
 
         
@@ -54,13 +59,10 @@ namespace maghsadAPI.Controllers
         {
             var email = HttpContext.User?.Claims?.FirstOrDefault(x=> x.Type == ClaimTypes.Email).Value;
             var user =await _userManager.FindByEmailAsync(email);
+            user.Roles = await _userManager.GetRolesAsync(user) as  List<string>;
+            user.Token = _tokenService.CreateToken(user);
 
-             return new UserDto
-            {
-                Email = user.Email,
-                Token = _tokenService.CreateToken(user),
-                Username =  user.UserName
-            };
+            return _mapper.Map<AppUser, UserDto>(user);
         }
 
 
@@ -74,15 +76,11 @@ namespace maghsadAPI.Controllers
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
             if(!result.Succeeded) return Unauthorized();
-         
 
+            user.Roles = await _userManager.GetRolesAsync(user) as  List<string>;
+            user.Token = _tokenService.CreateToken(user);
 
-            return new UserDto
-            {
-                Email = user.Email,
-                Token = _tokenService.CreateToken(user),
-                Username =  user.UserName
-            };
+            return _mapper.Map<AppUser, UserDto>(user);
         }
 
         [HttpGet("emailexists")]
