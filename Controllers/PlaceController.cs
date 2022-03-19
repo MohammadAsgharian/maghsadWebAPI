@@ -33,7 +33,7 @@ namespace maghsadAPI.Controllers
 
 
 
-            return Ok(places);
+            return Ok(placeParams);
         }
 
         
