@@ -20,6 +20,7 @@ namespace maghsadAPI.Models
         public Province Province{get; set;}
 
         public  ICollection<Place> Places {get; set;} = new List<Place>();
+        public  ICollection<Post> Posts {get; set;} = new List<Post>();
 
     }
 }

@@ -13,6 +13,7 @@ namespace maghsadAPI.Data
         }
         // Set Of All Places {Like Hotels, Attractions, Restourant and etc }
         public DbSet<Models.Place> Places{get; set;}
+        
 
         public DbSet<Models.PlaceType> PlaceTypes{get; set;}
 
@@ -24,6 +25,7 @@ namespace maghsadAPI.Data
 
         public DbSet<Models.Province> Provinces{get; set;}
         public DbSet<Models.City> Cities{get; set;}
+        public DbSet<Models.Post> Posts {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -123,6 +125,30 @@ namespace maghsadAPI.Data
                     .HasMany(p => p.Places)
                     .WithOne(p => p.AttractionType)
                     .HasForeignKey(p => p.AttractionTypeId);
+
+
+                 modelBuilder.Entity<Post>()
+                    .HasOne(p => p.City)
+                    .WithMany(p => p.Posts)
+                    .HasForeignKey(p => p.CityId)
+                    .OnDelete(DeleteBehavior.SetNull);
+                    
+                modelBuilder.Entity<City>()
+                    .HasMany(p => p.Posts)
+                    .WithOne(p => p.City)
+                    .HasForeignKey(p => p.CityId)
+                    .OnDelete(DeleteBehavior.SetNull);
+                
+                 modelBuilder.Entity<Post>()
+                    .HasOne(p => p.AppUser)
+                    .WithMany(p => p.Posts)
+                    .HasForeignKey(p => p.UserId)
+                    .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Models.Identity.AppUser>()
+                    .HasMany(p => p.Posts)
+                    .WithOne(p => p.AppUser)
+                    .HasForeignKey(p => p.UserId);
+
         }
     }
 }

@@ -29,7 +29,7 @@ namespace maghsadAPI.Models.Identity
 
         public  ICollection<Place> Places {get; set;} = new List<Place>();
         public  ICollection<PlacePhoto> PlacePhotos {get; set;} = new List<PlacePhoto>();
-
+        public  ICollection<Post> Posts {get; set;} = new List<Post>();
 
 
 
