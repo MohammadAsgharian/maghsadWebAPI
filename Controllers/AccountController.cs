@@ -35,23 +35,24 @@ namespace maghsadAPI.Controllers
         }
 
         
-        // [HttpGet("create")]
-        // public async Task<ActionResult<bool>> CreateUser()
-        // {
+        [HttpGet("create")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> CreateUser(RegiterUserDto registerUserDto)
+        {
           
-        //     AppUser appUser = new AppUser
-        //     {
-        //         SinginDate = DateTime.Now.Date,
-        //         UserName = "m.vahid",
-        //         Email = "marzieh.vahid@gmail.com",
-        //         LastName ="وحید",
-        //         FirstName ="مرضیه"
-        //     };
+            AppUser appUser = new AppUser
+            {
+                SinginDate = DateTime.Now.Date,
+                UserName = registerUserDto.UserName,
+                Email = registerUserDto.Email,
+                LastName =registerUserDto.LastName,
+                FirstName =registerUserDto.FirstName
+            };
             
-        //     await _userManager.CreateAsync(appUser,"Rayan@Asgharian.1398");
+            await _userManager.CreateAsync(appUser,"Rayan@Asgharian.1398");
             
-        //      return (await _userManager.AddToRoleAsync(appUser,"Admin")).Succeeded;
-        // }
+             return (await _userManager.AddToRoleAsync(appUser,"Admin")).Succeeded;
+        }
 
         [HttpGet("refresh")]
         [Authorize]
