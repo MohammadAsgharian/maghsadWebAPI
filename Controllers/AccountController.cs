@@ -34,27 +34,24 @@ namespace maghsadAPI.Controllers
             _mapper = mapper;
         }
 
-        
-        [HttpGet("create")]
+         [Route("login")]
         [HttpPost]
-        public async Task<ActionResult<bool>> CreateUser(RegiterUserDto registerUserDto)
+        public async Task<ActionResult<LoginDto>> CreateUser(LoginDto registerUserDto)
         {
           
             AppUser appUser = new AppUser
             {
                 SinginDate = DateTime.Now.Date,
-                UserName = registerUserDto.UserName,
-                Email = registerUserDto.Email,
-                LastName =registerUserDto.LastName,
-                FirstName =registerUserDto.FirstName
+                Email = registerUserDto.Email
             };
             
-            await _userManager.CreateAsync(appUser,"Rayan@Asgharian.1398");
+            await _userManager.CreateAsync(appUser,registerUserDto.Password);
+            await _userManager.AddToRoleAsync(appUser,"Admin");
             
-             return (await _userManager.AddToRoleAsync(appUser,"Admin")).Succeeded;
+            return (registerUserDto);
         }
 
-        [HttpGet("refresh")]
+        [Route("refresh")]
         [Authorize]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
@@ -69,7 +66,7 @@ namespace maghsadAPI.Controllers
 
          [Route("login")]
          [HttpPost]
-        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
+        public async Task<ActionResult<UserDto>> Login([FromBody] LoginDto loginDto)
         {
            var user = await _userManager.FindByEmailAsync(loginDto.Email);
             if(user == null) return Unauthorized();
