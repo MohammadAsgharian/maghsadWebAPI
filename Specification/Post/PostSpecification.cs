@@ -1,13 +1,12 @@
 
 namespace maghsadAPI.Specification
 {
-    public  class PlaceSpecification : BaseSpecification<Models.Place>
+    public  class PostSpecification : BaseSpecification<Models.Post>
     {
 
-        public PlaceSpecification(PlaceSpecParams placeParams)
+        public PostSpecification(PostSpecParams placeParams)
         {
-            AddInclude(x=> x.PlaceType);
-            AddorderByDescending(x => x.Id);
+            AddOrderBy(x => x.Id);
             ApplyPaging(placeParams.PageSize *(placeParams.PageIndex -1 ), placeParams.PageSize);
 
             if(!string.IsNullOrEmpty(placeParams.Sort))
@@ -23,7 +22,7 @@ namespace maghsadAPI.Specification
                 }
             }
         }
-         public PlaceSpecification(long Id): base(x=> x.Id == Id)
+         public PostSpecification(long Id): base(x=> x.Id == Id)
         {
             AddInclude(x=> x.PlaceType);
         }

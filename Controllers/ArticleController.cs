@@ -13,13 +13,13 @@ namespace maghsadAPI.Controllers
     [Route("api/[controller]")]
     public class ArticleController : ControllerBase
     {
-        private readonly IGenericRepository<Place>  _articleRepository;
-        public ArticleController(IGenericRepository<Place> placeRepository, IGenericRepository<PlaceType> placetypeRepository)
+        private readonly IGenericRepository<Post>  _articleRepository;
+        public ArticleController(IGenericRepository<Post> postRepository
         {
-            _articleRepository = placeRepository;
+            _articleRepository = postRepository;
         }
         [Route("getarticle")]
-        public async Task<ActionResult<Pagination<Models.Place>>> GetArtcile([FromQuery]PlaceSpecParams placeParams)
+        public async Task<ActionResult<Pagination<Models.Post>>> GetArtcile([FromQuery]PlaceSpecParams placeParams)
         {
             var spec = new PlaceSpecification(placeParams);
             
