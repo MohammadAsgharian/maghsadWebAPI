@@ -14,16 +14,16 @@ namespace maghsadAPI.Controllers
     public class ArticleController : ControllerBase
     {
         private readonly IGenericRepository<Post>  _articleRepository;
-        public ArticleController(IGenericRepository<Post> postRepository
+        public ArticleController(IGenericRepository<Post> articleRepository)
         {
-            _articleRepository = postRepository;
+            _articleRepository = articleRepository;
         }
         [Route("getarticle")]
         public async Task<ActionResult<Pagination<Models.Post>>> GetArtcile([FromQuery]PlaceSpecParams placeParams)
         {
             var spec = new PlaceSpecification(placeParams);
             
-            var countSpec = new PlaceWithFiltersSpecification(placeParams);
+            //var countSpec = new PlaceWithFiltersSpecification(placeParams);
             
 
 

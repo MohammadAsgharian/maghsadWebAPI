@@ -22,9 +22,6 @@ namespace maghsadAPI.Specification
                 }
             }
         }
-         public PostSpecification(long Id): base(x=> x.Id == Id)
-        {
-            AddInclude(x=> x.PlaceType);
-        }
+       
     }
 }
