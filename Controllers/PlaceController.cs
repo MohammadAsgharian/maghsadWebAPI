@@ -4,8 +4,10 @@ using maghsadAPI.Helper;
 using maghsadAPI.Models.Dto;
 using System.Threading.Tasks;
 using maghsadAPI.Specification;
+using maghsadAPI.Repository;
 using Microsoft.AspNetCore.Mvc;
 using maghsadAPI.Infrastructure;
+using maghsadAPI.Repository.Place;
 using System.Collections.Generic;
 
 
@@ -17,10 +19,10 @@ namespace maghsadAPI.Controllers
     [Route("api/[controller]")]
     public class PlaceController : ControllerBase
     {
-        private readonly IGenericRepository<Place>  _placeRepository;
+        private readonly  IPlaceRepository _placeRepository;
         private readonly IGenericRepository<PlaceType>  _placetypeRepository;
         private readonly IMapper _mapper;
-        public PlaceController(IGenericRepository<Place> placeRepository, IGenericRepository<PlaceType> placetypeRepository, IMapper mapper)
+        public PlaceController(PlaceRepository placeRepository, IGenericRepository<PlaceType> placetypeRepository, IMapper mapper)
         {
             _placeRepository = placeRepository;
             _placetypeRepository = placetypeRepository;
@@ -32,22 +34,17 @@ namespace maghsadAPI.Controllers
         public async Task<ActionResult<Pagination<Models.Dto.PlaceDto>>> GetPlace(PlaceSpecParams placeParams)
         {
             var spec = new PlaceSpecification(placeParams);
-            var countSpec = new PlaceWithFiltersSpecification(placeParams);
-            var totalItems = await _placeRepository.CountAsync(countSpec);
+            var totalItems = await _placeRepository.CountAsync(spec);
             var places = await _placeRepository.ListAsync(spec);
 
-            return Ok(_mapper.Map<IReadOnlyList<Place>, IReadOnlyList<PlaceDto>>(places));
+            return Ok(_mapper.Map<IList<Place>, IList<PlaceDto>>(places));
         }
-         [Route("lastplace")]
-        public async Task<ActionResult<Pagination<Models.Dto.PlaceDto>>> GetPlace()
+         [Route("getbannerattraction")]
+        public async Task<ActionResult<Pagination<Models.Dto.PlaceDto>>> GetBannerAttraction()
         {
-            var spec = new PlaceSpecification(new PlaceSpecParams{
-                PageIndex = 1,
-                PageSize = 15
-            });
-            var places = await _placeRepository.ListAsync(spec);
-
-            return Ok(_mapper.Map<IReadOnlyList<Place>, IReadOnlyList<PlaceDto>>(places));
+           
+            var places = await _placeRepository.GetAttractionBanner();
+            return Ok(_mapper.Map<IList<Place>, IList<PlaceDto>>(places));
         }
 
         
