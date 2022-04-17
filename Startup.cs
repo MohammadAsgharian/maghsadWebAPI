@@ -27,7 +27,7 @@ namespace maghsadAPI
         {
             services.AddScoped<ITokenService, TokenService>();
             // services.AddScoped((typeof(Repository.GenericRepository<Models.Place>)),(typeof(Repository.Place.PlaceRepository)));
-            services.AddScoped(typeof(Repository.Place.IPlaceRepository), typeof(Repository.Place.PlaceRepository));
+             services.AddScoped<Repository.Place.IPlaceRepository, Repository.Place.PlaceRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(Repository.GenericRepository<>)));
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddControllers();

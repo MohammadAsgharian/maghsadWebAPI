@@ -22,7 +22,7 @@ namespace maghsadAPI.Controllers
         private readonly  IPlaceRepository _placeRepository;
         private readonly IGenericRepository<PlaceType>  _placetypeRepository;
         private readonly IMapper _mapper;
-        public PlaceController(PlaceRepository placeRepository, IGenericRepository<PlaceType> placetypeRepository, IMapper mapper)
+        public PlaceController(IPlaceRepository placeRepository, IGenericRepository<PlaceType> placetypeRepository, IMapper mapper)
         {
             _placeRepository = placeRepository;
             _placetypeRepository = placetypeRepository;
