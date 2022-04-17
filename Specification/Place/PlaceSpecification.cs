@@ -32,6 +32,11 @@ namespace maghsadAPI.Specification
                 }
             }
         }
+        public PlaceSpecification(PlaceSpecParams placeParams,bool SetApplyLastData)
+            :this(placeParams)
+        {
+            ApplyLastData(placeParams.Take);
+        }
          public PlaceSpecification(long Id): base(x=> x.Id == Id)
         {
             AddInclude(x=> x.PlaceType);

@@ -19,6 +19,8 @@ namespace maghsadAPI.Specification
         public int Take { get; private set; }
         public int Skip { get; private set; }
         public  bool IsPagingEnable{get; private set;} 
+
+         public  bool GetLastData{get; private set;} 
         public Expression<Func<T, object>> OrderBy{get; private set;}
         public Expression<Func<T, object>> OrderByDescending{get; private set;}
         
@@ -46,6 +48,11 @@ namespace maghsadAPI.Specification
             Skip = skip;
             Take = take;
             IsPagingEnable = true;
+        }
+         protected void ApplyLastData(int take)
+        {
+            Take = take;
+            GetLastData = true;
         }
     }
 }

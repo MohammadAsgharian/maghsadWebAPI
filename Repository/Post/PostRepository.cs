@@ -1,22 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using maghsadAPI.Models;
 
 namespace maghsadAPI.Repository.Post
 {
-    public class PostRepository : IPostRepository
+    public class PostRepository 
     {
-
-        private readonly maghsadAPI.Data.MaghsadContext _context;
        
-        public PostRepository(Data.MaghsadContext context)
-        {
-              _context = context;
-        }
-        public async Task<IReadOnlyList<Models.Post>> GetPostAsync()
-        {
-            return await _context.Posts.ToListAsync();
-        }
+        
 
     }
 }

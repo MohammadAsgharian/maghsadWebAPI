@@ -15,5 +15,7 @@ namespace maghsadAPI.Infrastructure
         int Take{get;}
         int Skip {get;}
         bool IsPagingEnable{get;}
+
+        bool GetLastData{get;}
     }
 }

@@ -1,10 +1,15 @@
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
+using maghsadAPI.Models;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using maghsadAPI.Infrastructure;
+using maghsadAPI.Specification;
 
 namespace maghsadAPI.Repository.Place
 {
-    public interface IPlaceRepository
+    public interface IPlaceRepository: IGenericRepository<Models.Place>
     {
-        Task<IReadOnlyList<Models.Place>> GetPlaceAsync();
+      Task<IList<Models.Place>> GetAttractionBanner();
     }
 }

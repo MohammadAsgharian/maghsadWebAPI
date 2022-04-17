@@ -27,6 +27,11 @@ namespace maghsadAPI.Specification
             {
                 query = query.Skip(spec.Skip).Take(spec.Take);
             }
+            if(spec.GetLastData)
+            {
+                query = query.Take(spec.Take);
+            }
+
 
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
 
