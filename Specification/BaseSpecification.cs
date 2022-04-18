@@ -32,6 +32,7 @@ namespace maghsadAPI.Specification
         protected void AddInclude(Expression<Func<T, object>> includeExpression)
         {
             Includes.Add(includeExpression);
+            
         }
         protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)
         {

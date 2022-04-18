@@ -21,7 +21,7 @@ namespace maghsadAPI.Specification
             }
             if(spec.OrderByDescending != null)
             {
-                query = query.OrderBy(spec.OrderByDescending);
+                query = query.OrderByDescending(spec.OrderByDescending);
             }
             if(spec.IsPagingEnable)
             {
@@ -34,7 +34,7 @@ namespace maghsadAPI.Specification
 
 
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
-
+            
             return query;
         }
     }

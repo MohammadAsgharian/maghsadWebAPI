@@ -17,5 +17,6 @@ namespace maghsadAPI.Models.Dto
         public string City{get; set;}
         public string AttractionType{get; set;}
         public string AppUser{get; set;}
+        public string PlacePhoto{get; set;}
     }
 }

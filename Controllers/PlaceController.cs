@@ -44,7 +44,10 @@ namespace maghsadAPI.Controllers
         {
            
             var places = await _placeRepository.GetAttractionBanner();
-            return Ok(_mapper.Map<IList<Place>, IList<PlaceDto>>(places));
+            IList<PlaceDto> placesdtos = _mapper.Map<IList<Place>, IList<PlaceDto>>(places);
+            placesdtos =await _placeRepository.GetPhotos(placesdtos);
+
+            return Ok(placesdtos);
         }
 
         

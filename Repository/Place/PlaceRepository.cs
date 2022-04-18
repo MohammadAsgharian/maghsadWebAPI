@@ -5,21 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using maghsadAPI.Infrastructure;
 using maghsadAPI.Specification;
+using Microsoft.Extensions.Configuration;
 
 namespace maghsadAPI.Repository.Place
 {
+
+
     public class PlaceRepository : IPlaceRepository
     {
-       private readonly Data.MaghsadContext _context;
+        private IConfiguration Configuration { get; }
+        private readonly Data.MaghsadContext _context;
 
-        public PlaceRepository(Data.MaghsadContext context)
+
+        public PlaceRepository(Data.MaghsadContext context, IConfiguration configuration)
         {
             _context = context;
+             Configuration = configuration;
         }
         protected IQueryable<Models.Place> ApplySpecification(ISpecification<Models.Place> spec)
         {
             return SpecificationEvaluator<Models.Place>.GetQuery(_context.Set<Models.Place>().AsQueryable(), spec);
-        }        
+        }
         public async Task<IList<Models.Place>> GetListAsync()
         {
             return await _context.Set<Models.Place>().ToListAsync();
@@ -40,10 +46,31 @@ namespace maghsadAPI.Repository.Place
         }
        public async Task<IList<Models.Place>> GetAttractionBanner(){
            var spec = new PlaceSpecification(new PlaceSpecParams{
-               PlaceTypeId = 2
+               PlaceTypeId = 3,
            },true);
            IList<Models.Place> attractions =await ApplySpecification(spec).ToListAsync();
            return attractions;
+       }
+        public async Task<IList<Models.Dto.PlaceDto>> GetPhotos(IList<Models.Dto.PlaceDto> placeDtos){
+
+          IList<Models.Dto.PlaceDto> result=
+            new List<Models.Dto.PlaceDto>();
+            foreach(var item in placeDtos)
+            {
+                item.PlacePhoto=_context.Set<Models.PlacePhoto>().FirstOrDefault(y => y.PlaceId==item.Id && y.IsCover==true).PhotoName;
+                result.Add(item);
+            }
+        //    placeDtos.ToList()
+        //         .ForEach( x=>
+        //             {
+        //                 
+        //                 x.PlacePhoto = x.Id.ToString()+"/" + x.Id.ToString() + "-" + placePhoto.Id.ToString() + placePhoto.TypeFile;
+        //                 result.Add(x);
+
+        //             } )  ;
+
+
+           return result;
        }
 
     }
