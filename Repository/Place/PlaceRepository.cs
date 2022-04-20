@@ -55,11 +55,7 @@ namespace maghsadAPI.Repository.Place
 
           IList<Models.Dto.PlaceDto> result=
             new List<Models.Dto.PlaceDto>();
-            // foreach(var item in placeDtos)
-            // {
-            //     item.PlacePhoto=;
-            //     result.Add(item);
-            // }
+           
            placeDtos.ToList()
                 .ForEach( x=>
                     {

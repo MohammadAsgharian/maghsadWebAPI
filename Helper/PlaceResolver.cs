@@ -1,16 +1,22 @@
 using AutoMapper;
 using maghsadAPI.Models;
 using maghsadAPI.Models.Dto;
-using maghsadAPI.Models.Identity;
+using Microsoft.Extensions.Configuration;
 
 namespace maghsadAPI.Helper
 {
+    
+
+   
+
     public class PlaceResolver : IValueResolver<Place,PlaceDto, string>
     {
-        public string Resolve(Place source,PlaceDto destination, string memeber, ResolutionContext context)
+        private readonly IConfiguration _config;
+         public PlaceResolver(IConfiguration config)
         {
-
-            return "asdas";
+            _config = config;
         }
+
+        
     }
 }
