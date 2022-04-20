@@ -27,7 +27,7 @@ namespace maghsadAPI.Specification
                         AddOrderBy(p => p.Title);
                         break;
                     default :
-                        AddorderByDescending(p=> p.Id);
+                        AddOrderBy(p=> p.Id);
                         break;
                 }
             }

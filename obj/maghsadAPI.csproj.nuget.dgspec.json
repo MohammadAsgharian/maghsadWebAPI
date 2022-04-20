@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\React_Project\\MaghsadShow_API\\maghsadWebAPI\\maghsadAPI.csproj": {}
+    "D:\\MaghsadShow\\API_New\\maghsadWebAPI\\maghsadAPI.csproj": {}
   },
   "projects": {
-    "D:\\React_Project\\MaghsadShow_API\\maghsadWebAPI\\maghsadAPI.csproj": {
+    "D:\\MaghsadShow\\API_New\\maghsadWebAPI\\maghsadAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\React_Project\\MaghsadShow_API\\maghsadWebAPI\\maghsadAPI.csproj",
+        "projectUniqueName": "D:\\MaghsadShow\\API_New\\maghsadWebAPI\\maghsadAPI.csproj",
         "projectName": "maghsadAPI",
-        "projectPath": "D:\\React_Project\\MaghsadShow_API\\maghsadWebAPI\\maghsadAPI.csproj",
-        "packagesPath": "C:\\Users\\M_Asgharian\\.nuget\\packages\\",
-        "outputPath": "D:\\React_Project\\MaghsadShow_API\\maghsadWebAPI\\obj\\",
+        "projectPath": "D:\\MaghsadShow\\API_New\\maghsadWebAPI\\maghsadAPI.csproj",
+        "packagesPath": "C:\\Users\\Client\\.nuget\\packages\\",
+        "outputPath": "D:\\MaghsadShow\\API_New\\maghsadWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\M_Asgharian\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Client\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -113,12 +115,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.13, 5.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -127,7 +123,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -55,19 +55,19 @@ namespace maghsadAPI.Repository.Place
 
           IList<Models.Dto.PlaceDto> result=
             new List<Models.Dto.PlaceDto>();
-            foreach(var item in placeDtos)
-            {
-                item.PlacePhoto=_context.Set<Models.PlacePhoto>().FirstOrDefault(y => y.PlaceId==item.Id && y.IsCover==true).PhotoName;
-                result.Add(item);
-            }
-        //    placeDtos.ToList()
-        //         .ForEach( x=>
-        //             {
-        //                 
-        //                 x.PlacePhoto = x.Id.ToString()+"/" + x.Id.ToString() + "-" + placePhoto.Id.ToString() + placePhoto.TypeFile;
-        //                 result.Add(x);
+            // foreach(var item in placeDtos)
+            // {
+            //     item.PlacePhoto=;
+            //     result.Add(item);
+            // }
+           placeDtos.ToList()
+                .ForEach( x=>
+                    {
+                        Models.PlacePhoto placePhoto = _context.Set<Models.PlacePhoto>().FirstOrDefault(y => y.PlaceId==x.Id && y.IsCover==true);
+                        x.PlacePhoto =Configuration["PlacePhoto"]+ x.Id.ToString()+"/" + x.Id.ToString() + "-" + placePhoto.Id.ToString() + placePhoto.TypeFile;
+                        result.Add(x);
 
-        //             } )  ;
+                    } )  ;
 
 
            return result;

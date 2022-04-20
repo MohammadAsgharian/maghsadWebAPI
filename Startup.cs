@@ -30,10 +30,14 @@ namespace maghsadAPI
              services.AddScoped<Repository.Place.IPlaceRepository, Repository.Place.PlaceRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(Repository.GenericRepository<>)));
             services.AddAutoMapper(typeof(MappingProfile));
+           
             services.AddControllers();
             services.AddDbContext<maghsadAPI.Data.MaghsadContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString($"CommandConStr")));
             services.AddDbContext<maghsadAPI.Data.AppIdentityDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString($"IdentityConStr")));
-
+            services.AddScoped(provider => new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingProfile(provider.GetService<maghsadAPI.Data.MaghsadContext>()));
+            }).CreateMapper());
             services.AddIdentityServices(Configuration);
             services.AddSwaggerGen(c =>
             {
